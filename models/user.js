@@ -7,6 +7,14 @@ const UserSchema = new mongo.Schema({
     unique: true,
     sparse: true
   },
+  experience: [{
+    _id: mongo.Schema.Types.ObjectId,
+    company: {
+      type: String,
+      required: true,
+    },
+    title: String
+  }],
   email: {
     type: String,
     lowercase: true,
