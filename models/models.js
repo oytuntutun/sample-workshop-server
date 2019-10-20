@@ -4,4 +4,3 @@
 // it's pretty convenient when you have to work with multiple models
 
 export { default as User } from './users/model'
-export { default as Todo } from './todos/model'

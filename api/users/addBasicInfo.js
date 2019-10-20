@@ -16,9 +16,9 @@ async function action(req, res) {
   await user.save()
 }
 
-const add = {
+const addBasicInfo = {
   method: 'put',
   action
 }
 
-export default add
+export default addBasicInfo
