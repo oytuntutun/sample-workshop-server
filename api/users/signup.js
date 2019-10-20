@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 async function action(req, res) {
   const { io } = req.app
-  const { email, password, teamId } = req.body
+  const { email, password } = req.body
   // check if there is a user with the same email
   const exists = await User.findOne({ email: email.toLowerCase() })
   if(exists) return res.status(400).send('Email already exists.')
