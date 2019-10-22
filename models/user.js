@@ -10,13 +10,24 @@ const UserSchema = new mongo.Schema({
   experience: [{
     company: {
       type: String,
-      required: true,
     },
     title: String,
     description: String,
     startedAt: String,
     endedAt: String,
     currentlyWorking: Boolean,
+    location: String
+
+  }],
+  education: [{
+    school: {
+      type: String,
+    },
+    degree: String,
+    division: String,
+    startedAt: String,
+    endedAt: String,
+    currentlyStudying: Boolean,
     location: String
 
   }],
