@@ -22,6 +22,7 @@ const UserSchema = new mongo.Schema({
   education: [{
     school: {
       type: String,
+      required: true,
     },
     degree: String,
     division: String,

@@ -12,27 +12,30 @@ async function action(req, res) {
     location
   } = req.body
 
-  const user = await User.findByIdAndUpdate(
-    req.user.id,
-    {
-      $addToSet:{
-        educations: {
-          school,
-          degree,
-          division,
-          endedAt,
-          startedAt,
-          currentlyStudying,
-          location
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        $addToSet:{
+          education: {
+            school,
+            degree,
+            division,
+            endedAt,
+            startedAt,
+            currentlyStudying,
+            location
+          }
         }
       }
-    }
-  )
-
-  await console.log('user', user.education)
-
-  res.status(200).json({ user })
-  await user.save()
+    )
+    console.log('my user', user)
+    res.status(200).json({ user })
+    await user.save()
+  }
+  catch(err) {
+    console.log(err)
+  }
 }
 
 const addExperience = {
