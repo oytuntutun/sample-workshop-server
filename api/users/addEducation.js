@@ -1,6 +1,5 @@
 import { User } from '../../models'
 
-
 async function action(req, res) {
   const {
     school,
@@ -16,7 +15,7 @@ async function action(req, res) {
     const user = await User.findByIdAndUpdate(
       req.user.id,
       {
-        $addToSet:{
+        $addToSet: {
           education: {
             school,
             degree,
@@ -27,6 +26,9 @@ async function action(req, res) {
             location
           }
         }
+      },
+      {
+        new: true
       }
     )
     console.log('my user', user)

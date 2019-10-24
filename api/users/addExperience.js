@@ -12,26 +12,28 @@ async function action(req, res) {
     location,
   } = req.body
 
+  let experience = {
+    company,
+    title,
+    description,
+    startedAt,
+    endedAt,
+    currentlyWorking,
+    location,
+    _id: mongo.Types.ObjectId()
+  }
+
   const user = await User.findByIdAndUpdate(
     req.user.id,
     {
-      $addToSet:{
-        experience: {
-          company,
-          title,
-          description,
-          startedAt,
-          endedAt,
-          currentlyWorking,
-          location
-        }
+      $addToSet: {
+        experience
       }
-    }
+    },
+    {new: true}
   )
 
-  await console.log('user', user.experience)
-
-  res.status(200).json({ user })
+  res.status(200).json({ experience }) // TODO send experience here
   await user.save()
 }
 
