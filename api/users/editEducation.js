@@ -1,12 +1,16 @@
 import { User } from '../../models'
 
 async function action(req, res) {
-  const { school, _id } = req.body
-
-  //
-  // const findEducation = User.findOne({"_id": req.user.id},{education: { $elemMatch: {education:_id}}})
-  //
-  // console.log('education', findEducation)
+  const {
+    school,
+    _id,
+    division,
+    description,
+    location,
+    startedAt,
+    endedAt,
+    currentlyStudying
+  } = req.body
 
   const user = await User.findOneAndUpdate(
     {
@@ -15,7 +19,13 @@ async function action(req, res) {
     },
     {
       $set: {
-        'education.$.school': school
+        'education.$.school': school,
+        'education.$.division': division,
+        'education.$.description': description,
+        'education.$.location': location,
+        'education.$.startedAt': startedAt,
+        'education.$.endedAt': endedAt,
+        'education.$.currentlyStudying': currentlyStudying,
       }
     },
     {

@@ -30,10 +30,12 @@ async function action(req, res) {
         experience
       }
     },
-    {new: true}
+    {
+      new: true
+    }
   )
 
-  res.status(200).json({ experience }) // TODO send experience here
+  res.status(200).json({ experience })
   await user.save()
 }
 

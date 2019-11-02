@@ -1,4 +1,5 @@
 import { User } from '../../models'
+import mongo from 'mongoose'
 
 async function action(req, res) {
   const {
@@ -11,28 +12,31 @@ async function action(req, res) {
     location
   } = req.body
 
+  let education = {
+    school,
+    degree,
+    division,
+    endedAt,
+    startedAt,
+    currentlyStudying,
+    location,
+    _id: mongo.Types.ObjectId()
+  }
+
   try {
     const user = await User.findByIdAndUpdate(
       req.user.id,
       {
         $addToSet: {
-          education: {
-            school,
-            degree,
-            division,
-            endedAt,
-            startedAt,
-            currentlyStudying,
-            location
-          }
+          education
         }
       },
       {
         new: true
       }
     )
-    console.log('my user', user)
-    res.status(200).json({ user })
+
+    res.status(200).json({ education })
     await user.save()
   }
   catch(err) {
