@@ -10,6 +10,7 @@ const UserSchema = new mongo.Schema({
   experience: [{
     company: {
       type: String,
+      required: true
     },
     title: String,
     description: String,
@@ -30,7 +31,6 @@ const UserSchema = new mongo.Schema({
     endedAt: String,
     currentlyStudying: Boolean,
     location: String
-
   }],
   email: {
     type: String,
