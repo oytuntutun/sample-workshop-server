@@ -1,7 +1,7 @@
 import { User } from '../../models'
 
 async function action(req, res) {
-  const { name, surname, title, company } = req.body
+  const { name, surname, title, company, photo } = req.body
 
   const user = await User.findByIdAndUpdate(
     req.user.id,
@@ -9,7 +9,8 @@ async function action(req, res) {
       name,
       surname,
       title,
-      company
+      company,
+      photo
     }
   )
   res.status(200).json({ user })
