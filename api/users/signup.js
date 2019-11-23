@@ -10,7 +10,8 @@ async function action(req, res) {
   if(exists) return res.status(400).send('Email already exists.')
 
   const newUser = new User({
-    email
+    email,
+    darkmode: false
   })
 
   // create and save hashed password
