@@ -21,7 +21,7 @@ async function action(req, res) {
     startedAt,
     currentlyStudying,
     location,
-    description
+    description,
     _id: mongo.Types.ObjectId()
   }
 
