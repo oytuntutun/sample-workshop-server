@@ -9,7 +9,8 @@ async function action(req, res) {
     endedAt,
     startedAt,
     currentlyStudying,
-    location
+    location,
+    description
   } = req.body
 
   let education = {
@@ -20,6 +21,7 @@ async function action(req, res) {
     startedAt,
     currentlyStudying,
     location,
+    description
     _id: mongo.Types.ObjectId()
   }
 
